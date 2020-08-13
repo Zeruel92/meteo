@@ -1,0 +1,36 @@
+name: meteo
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.3
+  rxdart: ^0.24.1
+  http: ^0.12.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/cloudy.png
+    - images/clear-moon.png
+    - images/cloudy-day.png
+    - images/cloudy-moon.png
+    - images/heavy-rain.png
+    - images/ice.png
+    - images/icy-rain.png
+    - images/rainy.png
+    - images/sunny-day.png
+    - images/thunder.png
+    - images/thunder-rain.png
+    - images/windy.png
