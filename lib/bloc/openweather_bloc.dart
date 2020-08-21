@@ -14,7 +14,7 @@ class OpenWeatherBloc {
   BehaviorSubject<OpenWeatherEvent> _event;
   BehaviorSubject<BlocState> _internalState;
 
-  final _apiKey = "";
+  final _apiKey = "#{APIKEY}#";
 
   Stream get current => _currentWeather.stream;
   Sink get event => _event.sink;

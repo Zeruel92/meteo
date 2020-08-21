@@ -12,10 +12,13 @@ class OpenWeather {
         temperatureMin = json['main']['temp_min'],
         temperatureMax = json['main']['temp_max'],
         temperatureFeelsLike = json['main']['feels_like'];
-  double get temperatureCelsius => temperature - 273.15;
-  double get temperatureMinCelsius => temperatureMin - 273.15;
-  double get temperatureMaxCelsius => temperatureMax - 273.15;
-  double get temperatureFeelsLikeCelsius => temperatureFeelsLike - 273.15;
+  String get temperatureCelsius => (temperature - 273.15).toStringAsFixed(2);
+  String get temperatureMinCelsius =>
+      (temperatureMin - 273.15).toStringAsFixed(2);
+  String get temperatureMaxCelsius =>
+      (temperatureMax - 273.15).toStringAsFixed(2);
+  String get temperatureFeelsLikeCelsius =>
+      (temperatureFeelsLike - 273.15).toStringAsFixed(2);
   String get icon {
     switch (weather) {
       case 'Clear':
@@ -23,6 +26,11 @@ class OpenWeather {
         break;
       case 'Rain':
         return 'images/rainy.png';
+        break;
+      case 'Clouds':
+        return ((DateTime.now().hour > 19) || (DateTime.now().hour < 4))
+            ? 'images/cloudy-moon.png'
+            : 'images/cloudy-day.png';
         break;
       default:
         return '';
