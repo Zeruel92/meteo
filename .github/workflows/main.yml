@@ -13,7 +13,7 @@ jobs:
       run: sed -i 's/#{APIKEY}#/${{ secrets.APIKEY }}/g' lib/bloc/openweather_bloc.dart
     - name: Setting build time for tag release
       run: |
-        echo "::set-env name=NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
+        echo "::set-env name=NOW::v$(date +'%Y%m%d.%H%M%S')"
     - uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
