@@ -1,7 +1,7 @@
 on:
  push:
   branches:
-   -master
+   - master
 name: Test, Build and Release apk
 jobs:
   build:
