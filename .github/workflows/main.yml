@@ -22,3 +22,5 @@ jobs:
       with:
         artifacts: "build/app/outputs/flutter-apk/*.apk"
         token: ${{ secrets.TOKEN }}
+        tag: ${{ steps.version.outputs.content }}
+        commit: ${{ github.sha }}
