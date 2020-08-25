@@ -21,21 +21,19 @@ class Weather extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Card(
-                                      child: Column(
-                                        children: [
-                                          Image.asset('${weather.data.icon}'),
-                                          Text('${weather.data.description}'),
-                                          Text(
-                                              'Temperature: ${weather.data.temperatureCelsius} °C'),
-                                          Text(
-                                              'Min: ${weather.data.temperatureMinCelsius} °C'),
-                                          Text(
-                                              'Max: ${weather.data.temperatureMaxCelsius} °C'),
-                                          Text(
-                                              'Feels Like: ${weather.data.temperatureFeelsLikeCelsius} °C'),
-                                        ],
-                                      ),
+                                    Column(
+                                      children: [
+                                        Image.asset('${weather.data.icon}'),
+                                        Text('${weather.data.description}'),
+                                        Text(
+                                            'Temperature: ${weather.data.temperatureCelsius} °C'),
+                                        Text(
+                                            'Min: ${weather.data.temperatureMinCelsius} °C'),
+                                        Text(
+                                            'Max: ${weather.data.temperatureMaxCelsius} °C'),
+                                        Text(
+                                            'Feels Like: ${weather.data.temperatureFeelsLikeCelsius} °C'),
+                                      ],
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -43,32 +41,23 @@ class Weather extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Card(
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                  '${weather.data.icon}'),
-                                              Text('Tomorrow')
-                                            ],
-                                          ),
+                                        Column(
+                                          children: [
+                                            Image.asset('${weather.data.icon}'),
+                                            Text('Tomorrow')
+                                          ],
                                         ),
-                                        Card(
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                  '${weather.data.icon}'),
-                                              Text('2- Days Forecast')
-                                            ],
-                                          ),
+                                        Column(
+                                          children: [
+                                            Image.asset('${weather.data.icon}'),
+                                            Text('2- Days Forecast')
+                                          ],
                                         ),
-                                        Card(
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                  '${weather.data.icon}'),
-                                              Text('3-Days Forecast')
-                                            ],
-                                          ),
+                                        Column(
+                                          children: [
+                                            Image.asset('${weather.data.icon}'),
+                                            Text('3-Days Forecast')
+                                          ],
                                         )
                                       ],
                                     )
