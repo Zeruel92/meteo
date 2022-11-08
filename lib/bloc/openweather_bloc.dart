@@ -1,37 +1,39 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:meteo/events/bloc_state.dart';
 import 'package:meteo/events/openweather_events.dart';
 import 'package:meteo/model/openweather.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:http/http.dart' as http;
 
 class OpenWeatherBloc {
   static final OpenWeatherBloc _instance = OpenWeatherBloc._private();
+
   static OpenWeatherBloc get instance => _instance;
 
-  BehaviorSubject<OpenWeather> _currentWeather;
-  BehaviorSubject<OpenWeatherEvent> _event;
-  BehaviorSubject<BlocState> _internalState;
+  final BehaviorSubject<OpenWeather> _currentWeather = BehaviorSubject();
+  final BehaviorSubject<OpenWeatherEvent> _event = BehaviorSubject();
+  final BehaviorSubject<BlocState> _internalState =
+      BehaviorSubject.seeded(BlocState.BUSY);
 
   final _apiKey = "#{APIKEY}#";
 
-  Stream get current => _currentWeather.stream;
+  Stream<OpenWeather> get current => _currentWeather.stream;
+
   Sink get event => _event.sink;
-  Stream get state => _internalState.stream;
+
+  Stream<BlocState> get state => _internalState.stream;
 
   OpenWeatherBloc._private() {
-    _currentWeather = BehaviorSubject();
-    _event = BehaviorSubject();
-    _internalState = BehaviorSubject.seeded(BlocState.BUSY);
     _event.stream.listen(eventListener);
     fetchCurrent();
   }
 
   void fetchCurrent() async {
     _internalState.sink.add(BlocState.BUSY);
-    final current =
-        "https://api.openweathermap.org/data/2.5/weather?q=Lecce,it&appid=$_apiKey";
+    final current = Uri(
+        path:
+            "https://api.openweathermap.org/data/2.5/weather?q=Lecce,it&appid=$_apiKey");
     try {
       final response = await http.get(current);
       final currentData = OpenWeather.fromJson(json.decode(response.body));
